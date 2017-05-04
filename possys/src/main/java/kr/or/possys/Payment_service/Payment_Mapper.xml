@@ -21,7 +21,7 @@ FROM payment ORDER BY payment_id DESC LIMIT #{beginRow}, #{pagePerRow} </select>
 
 <select id="getpaymentCount" resultType="int"> SELECT COUNT(*) FROM board </select>
 
-<insert parameterType="kr.or.possys.Payment_service.?" id="insertpayment">
+<insert parameterType="kr.or.possys.Payment_service.Payment" id="insertpayment">
  INSERT INTO payment( payment_id, table_order_id , member_phone, payment_total,
  payment_pay, payment_addmileage, payment_usemileage, payment_date, payment_cate, payment_state) 
  VALUES( #{paymentId} , #{table_order_ID} , #{memberPhone} , #{paymentTotal} , #{paymentPay} , 

@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.or.possys.Payment_service.Payment_Mapper">
+  
+  <update parameterType="kr.or.possys.Payment_service.PaymentCancel" id="updatepaymentcancel">
+  
+  </update>
+  
+  <delete parameterType="kr.or.possys.Payment_service.PaymentCancel" id="deletepaymentcancel">
+  
+  
+  </delete>
+  
+  <select parameterType="int" id="getpaymentcancel" resultType="kr.or.possys.Payment_service.Payment">
+  
+  
+  </select>
+  
+  <select parameterType="java.util.Map" id="getpaymentcancelList" resultType="kr.or.possys.Payment_service.PaymentCancel">
+  
+  </select>
+  
+  <select id="getpaymentcancelCount" resultType="int">SELECT COUNT(*) FROM payment_cancel</select>
+  
+  <insert parameterType="kr.or.possys.Payment_service.Payment_Cancel" id="insertpaymentcancel">
+  
+  
+  </insert> 
+  
+  </mapper>
