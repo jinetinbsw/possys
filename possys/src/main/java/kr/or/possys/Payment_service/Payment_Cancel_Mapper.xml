@@ -5,27 +5,43 @@
   <mapper namespace="kr.or.possys.Payment_service.Payment_Mapper">
   
   <update parameterType="kr.or.possys.Payment_service.PaymentCancel" id="updatepaymentcancel">
-  
+	
   </update>
   
-  <delete parameterType="kr.or.possys.Payment_service.PaymentCancel" id="deletepaymentcancel">
+  <!-- <delete parameterType="kr.or.possys.Payment_service.PaymentCancel" id="deletepaymentcancel">
+  DELETE FROM payment_cancel WHERE payment_cancel_id = #{paymentCancelId};
   
-  
-  </delete>
+  </delete> -->
   
   <select parameterType="int" id="getpaymentcancel" resultType="kr.or.possys.Payment_service.Payment">
-  
+  	SELECT payment_cancel_id AS paymentCancelId 
+  	, payment_id AS paymentId 
+  	, table_order_id AS tableOrderId
+  	, member_phone AS memberPhone
+  	, payment_cancel_total AS paymentCancelTotal 
+  	, payment_cancel_pay AS paymentCancelPay
+  	, payment_cancel_backmileage AS paymentCancelBackMileage
+  	, payment_cancel_returnmileage AS paymentCancelReturnMileage 
+  	, payment_cancel_date AS paymentCancelDate
+ 	, payment_cancel_cate AS paymentCancelCate 
+ 	FROM payment_cancel WHERE payment_cancel_id = #{paymentCancelId};
   
   </select>
   
   <select parameterType="java.util.Map" id="getpaymentcancelList" resultType="kr.or.possys.Payment_service.PaymentCancel">
-  
+ 	SELECT payment_cancel_id AS paymentCancelId , payment_id AS paymentId , table_order_id AS tableOrderId,
+ 	payment_cancel_total AS paymentCancelTotal , payment_cancel_pay AS paymentCancelPay , payment_cancel_date AS paymentCancelDate
+ 	, payment_cancel_cate AS paymentCancelCate
+ 	 FROM payment_cancel ORDER BY payment_cancel_id DESC #{beginRow} , #{pagePerRow}; 
   </select>
   
   <select id="getpaymentcancelCount" resultType="int">SELECT COUNT(*) FROM payment_cancel</select>
   
   <insert parameterType="kr.or.possys.Payment_service.Payment_Cancel" id="insertpaymentcancel">
-  
+  INSERT INTO payment_cancel(payment_cancel_id , payment_id , table_order_id , member_phone , payment_cancel_total , payment_cancel_pay , 
+  payment_cancel_backmileage , payment_cancel_returnmileage , payment_cancel_date , payment_cancel_cate)
+  VALUES(#{paymentCancelId} , #{paymentId} , #{tableOrderId} , #{memberPhone} , #{paymentCancelToday} , #{paymentCancelPay} ,
+  #{paymentCancelBackMileage} , #{paymentCancelReturnMileage} , #{paymentCancelDate} , #{paymentCancelCate});
   
   </insert> 
   
